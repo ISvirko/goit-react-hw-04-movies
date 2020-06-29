@@ -15,7 +15,7 @@ const fetchMoviesWithQuery = (searchQuery, page = 1) => {
     .then((data) => data.results);
 };
 
-const getTrendingMovies = (page = 1) => {
+const fetchTrendingMovies = (page = 1) => {
   return fetch(`${baseUrl}/trending/movie/day?api_key=${apiKey}&page=${page}`)
     .then((res) => res.json())
     .then((data) => data.results);
@@ -38,7 +38,7 @@ const fetchMovieReviews = (movieId, page = 1) => {
 export default {
   fetchMovieDetails,
   fetchMoviesWithQuery,
-  getTrendingMovies,
+  fetchTrendingMovies,
   fetchMovieCast,
   fetchMovieReviews,
 };

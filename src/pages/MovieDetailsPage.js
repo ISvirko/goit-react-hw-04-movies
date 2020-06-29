@@ -53,7 +53,9 @@ class MovieDetailsPage extends Component {
           />
         )}
 
-        <CustomButton title="Back To Movies List" onClick={this.handleGoBack} />
+        <div className="go-back-btn">
+          <CustomButton title="Back To Movies" onClick={this.handleGoBack} />
+        </div>
 
         {movie && (
           <>

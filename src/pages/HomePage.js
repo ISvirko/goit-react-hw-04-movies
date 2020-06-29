@@ -12,12 +12,12 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    this.fetcher();
+    this.fetchTrendingMovies();
   }
 
-  fetcher = () => {
+  fetchTrendingMovies = () => {
     moviesApi
-      .getTrendingMovies(this.state.page)
+      .fetchTrendingMovies(this.state.page)
       .then((trending) =>
         this.setState((prev) => ({
           trending: [...prev.trending, ...trending],
@@ -44,7 +44,10 @@ class HomePage extends Component {
         {trending && (
           <>
             <MoviesList movies={trending} />
-            <CustomButton title="Load more" onClick={this.fetcher} />
+            <CustomButton
+              title="Load more"
+              onClick={this.fetchTrendingMovies}
+            />
           </>
         )}
       </>

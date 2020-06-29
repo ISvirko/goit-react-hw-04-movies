@@ -250,6 +250,13 @@ body {
   margin-bottom: 20px;
 }
 
+.go-back-btn {
+  width: 1170px;
+  display: flex;
+  padding-left: 20px;
+  margin: 0 auto;
+}
+
 /*
  * Стили компонента SearchForm
  */
