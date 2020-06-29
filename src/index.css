@@ -76,6 +76,7 @@ body {
   width: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   border: 1px dotted gray;
   margin: 10px;

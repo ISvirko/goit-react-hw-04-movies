@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import moviesApi from "../services/moviesApi";
 import SearchBox from "../components/SearchBox";
 import MoviesList from "../components/MoviesList";
-import getQueryParams from "../utils/getQueryParams";
 import Notification from "../components/Notification";
+import Button from "../components/Button";
+import moviesApi from "../services/moviesApi";
+import getQueryParams from "../utils/getQueryParams";
 
 class MoviesPage extends Component {
   state = {
     movies: [],
     error: null,
+    page: 1,
   };
 
   componentDidMount() {
@@ -24,14 +26,20 @@ class MoviesPage extends Component {
     const { query: nextQuery } = getQueryParams(this.props.location.search);
 
     if (prevQuery !== nextQuery) {
+      this.setState({ movies: [] });
       this.fetchWithQuery(nextQuery);
     }
   }
 
   fetchWithQuery = (query) => {
     moviesApi
-      .fetchMoviesWithQuery(query)
-      .then((movies) => this.setState({ movies }))
+      .fetchMoviesWithQuery(query, this.state.page)
+      .then((movies) =>
+        this.setState((prev) => ({
+          movies: [...prev.movies, ...movies],
+          page: prev.page + 1,
+        }))
+      )
       .catch((error) => this.setState({ error }));
   };
 
@@ -43,8 +51,9 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { movies, error } = this.state;
+    const { movies, error, page } = this.state;
     const { location } = this.props;
+    const { query } = getQueryParams(this.props.location.search);
 
     return (
       <>
@@ -58,6 +67,10 @@ class MoviesPage extends Component {
 
         <SearchBox onSubmit={this.handleSearch} />
         <MoviesList movies={movies} location={location} />
+        <Button
+          onClick={() => this.fetchWithQuery(query, page)}
+          title="Load more"
+        />
       </>
     );
   }

@@ -7,14 +7,16 @@ const fetchMovieDetails = (movieId) => {
   );
 };
 
-const fetchMoviesWithQuery = (searchQuery) => {
-  return fetch(`${baseUrl}/search/movie?api_key=${apiKey}&query=${searchQuery}`)
+const fetchMoviesWithQuery = (searchQuery, page = 1) => {
+  return fetch(
+    `${baseUrl}/search/movie?api_key=${apiKey}&query=${searchQuery}&page=${page}`
+  )
     .then((res) => res.json())
     .then((entries) => entries.results.map((entry) => entry));
 };
 
-const getPopularMovies = () => {
-  return fetch(`${baseUrl}/movie/popular?api_key=${apiKey}&page=1`)
+const getTrendingMovies = (page = 1) => {
+  return fetch(`${baseUrl}/trending/movie/week?api_key=${apiKey}&page=${page}`)
     .then((res) => res.json())
     .then((entries) => entries.results.map((entry) => entry));
 };
@@ -25,8 +27,10 @@ const fetchMovieCast = (movieId) => {
     .then((res) => res.cast);
 };
 
-const fetchMovieReviews = (movieId) => {
-  return fetch(`${baseUrl}/movie/${movieId}/reviews?api_key=${apiKey}&page=1`)
+const fetchMovieReviews = (movieId, page) => {
+  return fetch(
+    `${baseUrl}/movie/${movieId}/reviews?api_key=${apiKey}&page=${page}`
+  )
     .then((res) => res.json())
     .then((res) => res.results);
 };
@@ -34,7 +38,7 @@ const fetchMovieReviews = (movieId) => {
 export default {
   fetchMovieDetails,
   fetchMoviesWithQuery,
-  getPopularMovies,
+  getTrendingMovies,
   fetchMovieCast,
   fetchMovieReviews,
 };
