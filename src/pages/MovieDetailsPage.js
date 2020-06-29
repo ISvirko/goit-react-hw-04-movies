@@ -39,8 +39,12 @@ class MovieDetailsPage extends Component {
     history.push(routes.movies);
   };
 
+  handleGoToHomePage = () => {
+    this.props.history.push(routes.home);
+  };
+
   render() {
-    const { match } = this.props;
+    const { match, location } = this.props;
     const { movie, error } = this.state;
 
     return (
@@ -54,13 +58,13 @@ class MovieDetailsPage extends Component {
         )}
 
         <div className="go-back-btn">
-          <CustomButton title="Back To Movies" onClick={this.handleGoBack} />
+          <CustomButton title="Back to Movies" onClick={this.handleGoBack} />
         </div>
 
         {movie && (
           <>
             <MovieDetails movie={movie} />
-            <AdditionalInfo match={match} />
+            <AdditionalInfo match={match} location={location} />
           </>
         )}
 
