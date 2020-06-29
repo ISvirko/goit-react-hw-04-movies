@@ -4,7 +4,7 @@ import MovieDetails from "../components/MovieDetails";
 import AdditionalInfo from "../components/AdditionalInfo";
 import Notification from "../components/Notification";
 import Spinner from "../components/Spinner";
-import Button from "../components/Button";
+import CustomButton from "../components/CustomButton";
 import moviesApi from "../services/moviesApi";
 import routes from "../routes";
 
@@ -53,7 +53,7 @@ class MovieDetailsPage extends Component {
           />
         )}
 
-        <Button title="Back To Movies List" onClick={this.handleGoBack} />
+        <CustomButton title="Back To Movies List" onClick={this.handleGoBack} />
 
         {movie && (
           <>

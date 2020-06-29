@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moviesApi from "../services/moviesApi";
 import MoviesList from "../components/MoviesList";
 import Notification from "../components/Notification";
-import Button from "../components/Button";
+import CustomButton from "../components/CustomButton";
 
 class HomePage extends Component {
   state = {
@@ -44,7 +44,7 @@ class HomePage extends Component {
         {trending && (
           <>
             <MoviesList movies={trending} />
-            <Button title="Load more" onClick={this.fetcher} />
+            <CustomButton title="Load more" onClick={this.fetcher} />
           </>
         )}
       </>

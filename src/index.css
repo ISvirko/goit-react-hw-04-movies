@@ -61,26 +61,17 @@ body {
 }
 
 .navLink-active {
-  color: palevioletred;
-}
-
-.moviesList {
-  max-width: 1170px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  color: tomato;
 }
 
 .moviesList-item {
-  width: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px dotted gray;
-  margin: 10px;
-  padding: 10px 20px;
+  padding: 20px;
+}
+
+.moviesList-img-wrapper {
+  margin: 0 auto;
 }
 
 .moviesList-item > img {
@@ -90,15 +81,16 @@ body {
 .movieTitle {
   font-weight: 700;
   font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   text-align: center;
+  padding: 0 20px;
 }
 
 .movieInfo {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: space-around;
+  padding: 0 30px;
 }
 
 .movieInfo > div {
@@ -152,9 +144,13 @@ body {
 }
 
 .trending-title {
+  font-size: 40px;
+  text-transform: uppercase;
   text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  line-height: 70px;
+  letter-spacing: 0.8px;
 }
 
 .movieDetails-votes {
@@ -170,19 +166,16 @@ body {
 }
 
 .cast-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   max-width: 1170px;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .cast-list-item {
-  width: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px;
   padding: 10px;
   background-color: rgb(241, 241, 241);
 }
@@ -219,6 +212,16 @@ body {
   margin-bottom: 20px;
 }
 
+.reviews-text {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 50px;
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+}
+
 .additional-info-wrapper {
   box-shadow: 0 4px 2px -2px gray;
 }
@@ -236,4 +239,73 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/*
+ * Стили компонента SearchForm
+ */
+.SearchForm {
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgb(218, 218, 218);
+}
+
+.SearchForm-button {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background-image: url("https://image.flaticon.com/icons/svg/149/149852.svg");
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.6;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+
+.SearchForm-button:hover {
+  opacity: 1;
+}
+
+.SearchForm-button-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.SearchForm-input {
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.SearchForm-input::placeholder {
+  font: inherit;
+  font-size: 18px;
 }

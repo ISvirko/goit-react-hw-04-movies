@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchBox from "../components/SearchBox";
 import MoviesList from "../components/MoviesList";
 import Notification from "../components/Notification";
-import Button from "../components/Button";
+import CustomButton from "../components/CustomButton";
 import moviesApi from "../services/moviesApi";
 import getQueryParams from "../utils/getQueryParams";
 
@@ -32,15 +32,17 @@ class MoviesPage extends Component {
   }
 
   fetchWithQuery = (query) => {
-    moviesApi
-      .fetchMoviesWithQuery(query, this.state.page)
-      .then((movies) =>
-        this.setState((prev) => ({
-          movies: [...prev.movies, ...movies],
-          page: prev.page + 1,
-        }))
-      )
-      .catch((error) => this.setState({ error }));
+    if (query) {
+      moviesApi
+        .fetchMoviesWithQuery(query, this.state.page)
+        .then((movies) =>
+          this.setState((prev) => ({
+            movies: [...prev.movies, ...movies],
+            page: prev.page + 1,
+          }))
+        )
+        .catch((error) => this.setState({ error }));
+    }
   };
 
   handleSearch = (searchQuery) => {
@@ -66,11 +68,15 @@ class MoviesPage extends Component {
         )}
 
         <SearchBox onSubmit={this.handleSearch} />
-        <MoviesList movies={movies} location={location} />
-        <Button
-          onClick={() => this.fetchWithQuery(query, page)}
-          title="Load more"
-        />
+        {movies.length > 0 && (
+          <>
+            <MoviesList movies={movies} location={location} />
+            <CustomButton
+              onClick={() => this.fetchWithQuery(query, page)}
+              title="Load more"
+            />
+          </>
+        )}
       </>
     );
   }

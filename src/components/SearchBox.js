@@ -10,20 +10,33 @@ class SearchBox extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.value);
+    const { value } = this.state;
+
+    if (value.trim()) {
+      this.props.onSubmit(value);
+    }
+
     this.setState({ value: "" });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button type="submit">Search</button>
-      </form>
+      <div className="Searchbar">
+        <form className="SearchForm" onSubmit={this.handleSubmit}>
+          <input
+            className="SearchForm-input"
+            type="text"
+            autoComplete="off"
+            autoFocus
+            placeholder="Search..."
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <button type="submit" className="SearchForm-button">
+            <span className="SearchForm-button-label">Search</span>
+          </button>
+        </form>
+      </div>
     );
   }
 }

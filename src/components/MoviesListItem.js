@@ -2,13 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const MoviesListItem = ({ movie, location }) => (
-  <li className="moviesList-item">
-    {movie.poster_path && (
+  <div className="moviesList-item">
+    <div className="moviesList-img-wrapper">
       <img
-        src={`https://image.tmdb.org/t/p/w154/${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w154/${movie.poster_path}`
+            : "https://uixis.biz/assets/general/images/no_poster.jpg"
+        }
         alt={movie.title ? movie.title : movie.name}
+        width="154"
       />
-    )}
+    </div>
     <Link
       to={{
         pathname: `/movies/${movie.id}`,
@@ -31,7 +36,7 @@ const MoviesListItem = ({ movie, location }) => (
         <span className="infoText-rating"> {movie.vote_average}</span>
       </div>
     </div>
-  </li>
+  </div>
 );
 
 export default MoviesListItem;

@@ -6,7 +6,7 @@ const Spinner = () => (
   <div className="Loader">
     <Loader
       type="Rings"
-      color="palevioletred"
+      color="tomato"
       height={200}
       width={200}
       timeout={3000}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReviewsList from "../components/ReviewsList";
 import Notification from "../components/Notification";
-import Button from "../components/Button";
+import CustomButton from "../components/CustomButton";
 import moviesApi from "../services/moviesApi";
 
 class Reviews extends Component {
@@ -43,10 +43,12 @@ class Reviews extends Component {
         {reviews.length > 0 ? (
           <>
             <ReviewsList reviews={reviews} />
-            <Button onClick={this.fetchReviews} title="Load more" />
+            <CustomButton onClick={this.fetchReviews} title="Load more" />
           </>
         ) : (
-          <p>There are no reviews for this movie yet</p>
+          <p className="reviews-text">
+            There are no reviews for this movie yet
+          </p>
         )}
       </>
     );

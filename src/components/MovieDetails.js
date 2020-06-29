@@ -15,13 +15,15 @@ const getGenres = (arr) => {
 const MovieDetails = ({ movie }) => (
   <div className="movieDetails-wrapper">
     <div className="movieDetails">
-      {movie.poster_path && (
-        <img
-          src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
-          alt={movie.title ? movie.title : movie.name}
-          className="movieDetails-img"
-        />
-      )}
+      <img
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w342/${movie.poster_path}`
+            : "https://uixis.biz/assets/general/images/no_poster.jpg"
+        }
+        alt={movie.title ? movie.title : movie.name}
+        className="movieDetails-img"
+      />
       <div>
         <h1 className="movieDetails-title">
           {movie.title ? movie.title : movie.name}
