@@ -14,14 +14,17 @@ const MoviesListItem = ({ movie, location }) => (
         width="154"
       />
     </div>
-    <Link
-      to={{
-        pathname: `/movies/${movie.id}`,
-        state: { from: location },
-      }}
-    >
-      <p className="movieTitle">{movie.title ? movie.title : movie.name}</p>
-    </Link>
+
+    <div>
+      <Link
+        to={{
+          pathname: `/movies/${movie.id}`,
+          state: { from: location },
+        }}
+      >
+        <p className="movieTitle">{movie.title ? movie.title : movie.name}</p>
+      </Link>
+    </div>
 
     <div className="movieInfo">
       <div>

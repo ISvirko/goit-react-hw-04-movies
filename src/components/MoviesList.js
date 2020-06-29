@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    height: 380,
+    height: 400,
     width: 300,
   },
 }));

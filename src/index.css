@@ -67,7 +67,9 @@ body {
 .moviesList-item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 20px;
+  height: 400px;
 }
 
 .moviesList-img-wrapper {

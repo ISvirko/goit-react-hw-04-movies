@@ -12,19 +12,19 @@ const fetchMoviesWithQuery = (searchQuery, page = 1) => {
     `${baseUrl}/search/movie?api_key=${apiKey}&query=${searchQuery}&page=${page}`
   )
     .then((res) => res.json())
-    .then((entries) => entries.results.map((entry) => entry));
+    .then((data) => data.results);
 };
 
 const getTrendingMovies = (page = 1) => {
   return fetch(`${baseUrl}/trending/movie/day?api_key=${apiKey}&page=${page}`)
     .then((res) => res.json())
-    .then((entries) => entries.results.map((entry) => entry));
+    .then((data) => data.results);
 };
 
 const fetchMovieCast = (movieId) => {
   return fetch(`${baseUrl}/movie/${movieId}/credits?api_key=${apiKey}`)
     .then((res) => res.json())
-    .then((res) => res.cast);
+    .then((data) => data.cast);
 };
 
 const fetchMovieReviews = (movieId, page = 1) => {
@@ -32,7 +32,7 @@ const fetchMovieReviews = (movieId, page = 1) => {
     `${baseUrl}/movie/${movieId}/reviews?api_key=${apiKey}&page=${page}`
   )
     .then((res) => res.json())
-    .then((res) => res.results);
+    .then((data) => data.results);
 };
 
 export default {
