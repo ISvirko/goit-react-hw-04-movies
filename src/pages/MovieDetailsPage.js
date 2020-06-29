@@ -36,7 +36,7 @@ class MovieDetailsPage extends Component {
       return history.push(location.state.from);
     }
 
-    history.push(routes.movies);
+    history.push(routes.home);
   };
 
   render() {
