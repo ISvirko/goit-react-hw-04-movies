@@ -39,10 +39,6 @@ class MovieDetailsPage extends Component {
     history.push(routes.movies);
   };
 
-  handleGoToHomePage = () => {
-    this.props.history.push(routes.home);
-  };
-
   render() {
     const { match, location } = this.props;
     const { movie, error } = this.state;
