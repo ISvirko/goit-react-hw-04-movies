@@ -4,7 +4,8 @@ import getQueryParams from "../utils/getQueryParams";
 import routes from "../routes";
 
 const checkQuery = (location) => {
-  location.state.from &&
+  location.state &&
+    location.state.from &&
     location.state.from.search &&
     getQueryParams(location.state.from.search);
 };
@@ -22,7 +23,10 @@ const AdditionalInfo = ({ match, location }) => {
               to={{
                 pathname: `${match.url}/cast`,
                 state: {
-                  from: location.state.from ? location.state.from : routes.home,
+                  from:
+                    location.state && location.state.from
+                      ? location.state.from
+                      : routes.home,
                   search: query ? query : "",
                 },
               }}
@@ -37,7 +41,10 @@ const AdditionalInfo = ({ match, location }) => {
               to={{
                 pathname: `${match.url}/reviews`,
                 state: {
-                  from: location.state.from ? location.state.from : routes.home,
+                  from:
+                    location.state && location.state.from
+                      ? location.state.from
+                      : routes.home,
                   search: query ? query : "",
                 },
               }}
