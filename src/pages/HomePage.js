@@ -1,28 +1,23 @@
 import React, { Component } from "react";
 import moviesApi from "../services/moviesApi";
-import MoviesPage from "../components/MoviesList";
-import Spinner from "../components/Spinner";
+import MoviesList from "../components/MoviesList";
 import Notification from "../components/Notification";
 
 class HomePage extends Component {
   state = {
     trending: [],
-    loading: false,
     error: null,
   };
 
   componentDidMount() {
-    this.setState({ loading: true });
-
     moviesApi
       .getPopularMovies()
       .then((trending) => this.setState({ trending }))
-      .catch((error) => this.setState({ error }))
-      .finally(() => this.setState({ loading: false }));
+      .catch((error) => this.setState({ error }));
   }
 
   render() {
-    const { trending, loading, error } = this.state;
+    const { trending, error } = this.state;
 
     return (
       <>
@@ -34,10 +29,8 @@ class HomePage extends Component {
           />
         )}
 
-        {loading && <Spinner />}
-
         <h2 className="trending-title">Trending today</h2>
-        <MoviesPage movies={trending} />
+        {trending && <MoviesList movies={trending} />}
       </>
     );
   }

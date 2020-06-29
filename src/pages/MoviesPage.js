@@ -3,13 +3,11 @@ import moviesApi from "../services/moviesApi";
 import SearchBox from "../components/SearchBox";
 import MoviesList from "../components/MoviesList";
 import getQueryParams from "../utils/getQueryParams";
-import Spinner from "../components/Spinner";
 import Notification from "../components/Notification";
 
 class MoviesPage extends Component {
   state = {
     movies: [],
-    loading: false,
     error: null,
   };
 
@@ -31,13 +29,10 @@ class MoviesPage extends Component {
   }
 
   fetchWithQuery = (query) => {
-    this.setState({ loading: true });
-
     moviesApi
       .fetchMoviesWithQuery(query)
       .then((movies) => this.setState({ movies }))
-      .catch((error) => this.setState({ error }))
-      .finally(() => this.setState({ loading: false }));
+      .catch((error) => this.setState({ error }));
   };
 
   handleSearch = (searchQuery) => {
@@ -48,7 +43,7 @@ class MoviesPage extends Component {
   };
 
   render() {
-    const { movies, loading, error } = this.state;
+    const { movies, error } = this.state;
     const { location } = this.props;
 
     return (
@@ -60,8 +55,6 @@ class MoviesPage extends Component {
             type="danger"
           />
         )}
-
-        {loading && <Spinner />}
 
         <SearchBox onSubmit={this.handleSearch} />
         <MoviesList movies={movies} location={location} />
